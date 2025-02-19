@@ -1,6 +1,5 @@
 /*
     Problem 1:
-    
     Using callbacks and the fs module's asynchronous functions, do the following:
         1. Create a directory of random JSON files
         2. Delete those files simultaneously 
@@ -56,8 +55,4 @@ function deleteFiles(arrayOfFiles) {
   });
 }
 
-createDirect("folder1", (filePaths) => {
-  createFiles(filePaths,(data)=>{
-    deleteFiles(data)
-  });
-});
+module.exports = { createDirect, createFiles, deleteFiles };

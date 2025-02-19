@@ -12,7 +12,7 @@
 const fs = require("fs");
 const path = require("path");
 
-function problem2(inputfile,cb) {
+function problem2(inputfile, cb) {
   const file = path.join(__dirname, inputfile);
 
   fs.readFile(file, "utf8", (err, data) => {
@@ -24,8 +24,8 @@ function problem2(inputfile,cb) {
     fs.writeFile("upper.txt", upperCase, "utf8", (err) => {
       if (err) {
         console.log(err);
-      }else{
-        console.log(`upper.txt Created successfully`)
+      } else {
+        console.log(`upper.txt Created successfully`);
       }
 
       fs.writeFile("filenames.txt", "upper.txt\n", (err) => {
@@ -37,9 +37,11 @@ function problem2(inputfile,cb) {
         let result = splitting.join(".\n");
 
         fs.writeFile("lower.txt", result, "utf8", (err) => {
-          if (err) throw err;
-        
-            console.log(`lower.txt Created successfully`)
+          if (err) {
+            console.log(err);
+          }
+
+          console.log(`lower.txt Created successfully`);
 
           fs.appendFile("filenames.txt", "lower.txt\n", (err) => {
             if (err) {
@@ -55,13 +57,15 @@ function problem2(inputfile,cb) {
             fs.writeFile("sorted.txt", splitContent, "utf8", (err) => {
               if (err) {
                 console.log(err);
-              }else{
-                console.log('sorted.txt file created successfully')
+              } else {
+                console.log("sorted.txt file created successfully");
               }
-              fs.appendFile('filenames.txt','sorted.txt' ,(err)=>{
-                if(err) throw err
-              })
-              deleteFiles("filenames.txt")
+              fs.appendFile("filenames.txt", "sorted.txt", (err) => {
+                if (err) {
+                  console.log(err);
+                }
+              });
+              deleteFiles("filenames.txt");
             });
           });
         });
@@ -70,23 +74,23 @@ function problem2(inputfile,cb) {
   });
 }
 
-function deleteFiles(filename){
-  fs.readFile(filename,'utf8',(err,data)=>{
-    if(err){
-      console.log(err)
-    }else{
-      data.split('\n').forEach((file)=>{
-        fs.unlink(file,(err)=>{
-          if(err){
-            console.log(err)
-          }else{
-            console.log(`${file} files deleted successfully`)
+function deleteFiles(filename) {
+  fs.readFile(filename, "utf8", (err, data) => {
+    if (err) {
+      console.log(err);
+    } else {
+      data.split("\n").forEach((file) => {
+        fs.unlink(file, (err) => {
+          if (err) {
+            console.log(err);
+          } else {
+            console.log(`${file} files deleted successfully`);
           }
-        })
-      })
+        });
+      });
     }
-  })
+  });
 }
-problem2("lipsum.txt");
 
 
+module.exports = { problem2 };
