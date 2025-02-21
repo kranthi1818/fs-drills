@@ -105,14 +105,6 @@ function deleteFiles() {
   });
 }
 
-// readingFile("lipsum.txt", (data) => {
-//   conversionUpper(data, () => {
-//     conversionLower(() => {
-//       sortedContent(() => {
-//         deleteFiles();
-//       });
-//     });
-//   });
-// });
+
 
 module.exports = {readingFile,conversionUpper,conversionLower,sortedContent,deleteFiles}
