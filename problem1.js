@@ -9,9 +9,9 @@ const fs = require("fs");
 const path = require("path");
 
 function createDirect(dirName, cb) {
-  const dir = path.join(__dirname, dirName);
+ 
 
-  fs.mkdir(dir, (err) => {
+  fs.mkdir(dirName, (err) => {
     if (err) {
       console.log(err);
     } else {
@@ -20,7 +20,7 @@ function createDirect(dirName, cb) {
 
     const filePaths = [];
     for (let i = 1; i <= 5; i++) {
-      filePaths.push(path.join(dir, `${i + "-file.json"}`));
+      filePaths.push(path.join( `${i + "-file.json"}`));
     }
     cb(filePaths);
   });
@@ -29,11 +29,11 @@ function createDirect(dirName, cb) {
 function createFiles(arrayOfFiles, cb) {
   let counter = 0;
   arrayOfFiles.forEach((element) => {
-    fs.writeFile(element, "", "utf8", (err) => {
+    fs.writeFile(element, "", (err) => {
       if (err) {
         console.log(err);
       } else {
-        console.log("Files created" + element + "successfully");
+        console.log("Files created " + element + "successfully");
       }
       counter++;
       if (counter === arrayOfFiles.length) {
